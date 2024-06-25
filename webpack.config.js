@@ -10,11 +10,11 @@ const webpackMode = process.env.NODE_ENV || 'development';
 module.exports = {
 	mode: webpackMode,
 	entry: {
-		main: './src/main.js',
+		main: './src/main.js', //도입파일
 	},
 	output: {
-		path: path.resolve('./dist'),
-		filename: '[name].min.js'
+		path: path.resolve('./dist'), // 빌드폴더명
+		filename: '[name].min.js' // 파일명 패턴
 	},
 	// es5로 빌드 해야 할 경우 주석 제거
 	// 단, 이거 설정하면 webpack-dev-server 3번대 버전에서 live reloading 동작 안함
@@ -27,7 +27,7 @@ module.exports = {
 			new TerserPlugin({
 				terserOptions: {
 					compress: {
-						drop_console: true
+						drop_console: true // 콘솔로그 찍은거 자동으로 날려줌
 					}
 				}
 			})
@@ -40,7 +40,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				loader: 'babel-loader',
+				loader: 'babel-loader', // 바벨 파일 불러와서 셋팅 해즘 
 				exclude: /node_modules/
 			},
 			{
